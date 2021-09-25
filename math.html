@@ -48,25 +48,6 @@
       this.left = this.right = null;
     }
   </script>
-  <script>
-    function justgo() {
-      let arr = [];
-      while (arr.length < 6) {
-        let n = Math.random() * 33;
-        n = ~~n;
-        if (!arr.includes(n)) {
-          arr.push(n);
-        }
-      }
-      arr.sort((a, b) => a - b);
-      let n = Math.random() * 16;
-      n = ~~n;
-      arr.push(n);
-      console.log(arr);
-    }
-    justgo();
-  </script>
-
 
 <script>
 let arr = [1,3,2,6,5];
