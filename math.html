@@ -50,18 +50,7 @@
   </script>
 
 <script>
-let arr = [1,3,2,6,5];
-var verifyPostorder = function(postorder) {
-  if(postorder.length === 1){
-    return true;
-  }
-  // 中间点的值
-  let nodeVal = postorder.pop();
-  let left = postorder.slice(0,3);
-  let right = postorder.slice(3);
- 
-  return verifyPostorder(left) && verifyPostorder(right);
-};
+
 
 
 </script>
