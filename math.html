@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+  <title>动动脑</title>
+</head>
+
+<body>
+  <div>
+    <a href="https://blog.csdn.net/ATFWUS/article/details/106193067"> 算法精选100题</a>
+  </div>
+  <script>
+    let methods = [
+      "二分法",
+      "map缓存法",
+      "双指针",
+      "快慢指针",
+      "滑动窗口",
+      "分治法",
+      "动态规划",
+      "投票法",
+      "排序法",
+      "中心扩散法",
+      "数组翻转法",
+    ];
+    // 二进制
+    // 16 & 16 -1 = 0
+    // 12 ^ 16 ^ 16 = 12;
+
+    function ListNode(val, next) {
+      this.val = val === undefined ? 0 : val;
+      this.next = next === undefined ? null : next;
+    }
+
+    function Node(val, left, right, next) {
+      this.val = val === undefined ? null : val;
+      this.left = left === undefined ? null : left;
+      this.right = right === undefined ? null : right;
+      this.next = next === undefined ? null : next;
+    }
+
+    function TreeNode(val) {
+      this.val = val;
+      this.left = this.right = null;
+    }
+  </script>
+  <script>
+    function justgo() {
+      let arr = [];
+      while (arr.length < 6) {
+        let n = Math.random() * 33;
+        n = ~~n;
+        if (!arr.includes(n)) {
+          arr.push(n);
+        }
+      }
+      arr.sort((a, b) => a - b);
+      let n = Math.random() * 16;
+      n = ~~n;
+      arr.push(n);
+      console.log(arr);
+    }
+    justgo();
+  </script>
+
+
+
+
+<script>
+let arr = [1,3,2,6,5];
+var verifyPostorder = function(postorder) {
+  if(postorder.length === 1){
+    return true;
+  }
+  // 中间点的值
+  let nodeVal = postorder.pop();
+  let left = postorder.slice(0,3);
+  let right = postorder.slice(3);
+ 
+  return verifyPostorder(left) && verifyPostorder(right);
+};
+
+
+</script>
+
+
+
+
+</body>
+
+</html>
