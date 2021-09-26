@@ -19,43 +19,18 @@
         >
       </li>
       <li>
-        <a href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/">数据流中的中位数</a>
+        <a
+          href="https://leetcode-cn.com/problems/shu-ju-liu-zhong-de-zhong-wei-shu-lcof/"
+          >数据流中的中位数</a
+        >
       </li>
       <li>
-        <a href="https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/">序列化二叉树</a>
+        <a href="https://leetcode-cn.com/problems/xu-lie-hua-er-cha-shu-lcof/"
+          >序列化二叉树</a
+        >
       </li>
     </ul>
-    <script>
-      let arr = [5, 2, -17, -11, 25, 76, 62, 98, 92, 61];
 
-      function fn(arr, left, right) {
-        if (left >= right) {
-          return true;
-        }
-        let p = -1,
-          nodeVal = arr[right];
-        for (let i = 0; i < right; i++) {
-          // 找第一个大于根节点的节点，就是右树的开始
-          if (p < 0 && arr[i] > nodeVal) {
-            p = i;
-          }
-          // 如果右树，有任意小于根节点的直接返回false
-          if (p > -1 && i >= p && arr[i] < nodeVal) {
-            return false;
-          }
-        }
-        if (p > -1) {
-          return fn(arr, left, p - 1) && fn(arr, p, right - 1);
-        } else {
-          return fn(arr, left, right - 1);
-        }
-      }
-
-      var verifyPostorder = function (arr) {
-        return fn(arr, 0, arr.length - 1);
-      };
-
-      console.log(verifyPostorder(arr));
-    </script>
+    <script></script>
   </body>
 </html>
