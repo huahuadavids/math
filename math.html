@@ -3,9 +3,6 @@
 
 <head>
   <meta charset="UTF-8" />
-  <script src="https://cdn.bootcdn.net/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
-  <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-  <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
   <title>动动脑</title>
 </head>
 
@@ -50,6 +47,55 @@
   </script>
 
 <script>
+  // 7 8
+
+  const big = Math.pow(2, 31);
+
+  var fn = function(a, b, c) {
+    if (a) {
+      let res = -1;
+      if ((a > 0 && b > 0) || (a < 0 && b < 0)) {
+        res = 0;
+      }
+      a = Math.abs(a);
+      b = Math.abs(b);
+      if(a < b){
+        return c;
+      }
+      if(a === b){
+        return c + (res || 1);
+      }
+      let r;
+      let i = 0;
+      for(; i < big; i++){
+        if(a < (b << i)){
+          break;
+        }
+      }
+      i--;
+      c += Math.pow(2, i);
+      r = fn(a - (b << i) , b, c);
+      if(res){
+        r = 0 - r;
+        if(r <= -big){
+          r = -big;
+        }
+      }else {
+        if(r >= big - 1){
+          r = big - 1;
+        }
+      }
+      return r;
+    } else {
+      return c;
+    }
+  };
+
+  var divide = function(a, b) {
+    return fn(a,b,0)
+  }
+
+  console.log(divide(-3,3))
 
 
 
