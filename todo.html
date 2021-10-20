@@ -66,34 +66,10 @@
     </ul>
 
     <script>
-      // 今天的题
-      // https://leetcode-cn.com/problems/569nqc/
-
-      let arr = [1,6,2,3,4,5,8,9];
-      let num = 5;
-
-      function range(arr, num) {
-          let i = 0;
-          let rightBorder = -1;
-          while (i < arr.length) {
-              if (arr[i] > num) {
-                  i++
-              } else {
-                  let nextNum = rightBorder + 1;
-                  let next_value = arr[nextNum];
-                  arr[nextNum] = arr[i];
-                  arr[i] = next_value;
-                  rightBorder++;
-                  i++;
-              }
-          }
-          return arr;
-      }
-
-      console.log(range(arr, num))
-
-
-
+      // todo 
+      // https://leetcode-cn.com/problems/majority-element-ii/
+     
+      
     </script>
   </body>
 </html>
