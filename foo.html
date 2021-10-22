@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>快速排序</h1>
+    <script>
+      const arr = [1, 22, 3, 4, 55, 6, 7, 10, 88, 9, 10, 10];
+
+      // 1. 直观解法
+      // 缺点: 额外的空间，base不应该是固定的，否则最差情况是 O(n2)
+      function f1(arr) {
+        if (arr.length < 2) {
+          return arr;
+        }
+        const base = arr.pop();
+        const left = [],
+          right = [];
+        arr.forEach((e) => {
+          if (e <= base) {
+            left.push(e);
+          } else {
+            right.push(e);
+          }
+        });
+        return [...f1(left), base, ...f1(right)];
+      }
+
+      // 2. 题目引申
+      // 把数组arr分为左右两部分，要求不使用额外空间，复杂度是 O(n)
+      function devide(arr, target) {
+        let border = -1;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] <= target) {
+            [arr[border + 1], arr[i]] = [arr[i], arr[border + 1]];
+            border++;
+          }
+        }
+        console.log(arr);
+      }
+
+      // 3. 荷兰国企问题 3个颜色，数据3种状态
+      function fn(arr, target) {
+        let border = -1;
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] < target) {
+            [arr[border + 1], arr[i]] = [arr[i], arr[border + 1]];
+            border++;
+          }
+        }
+        for (let i = 0; i < arr.length; i++) {
+          if (arr[i] === target) {
+            [arr[border + 1], arr[i]] = [arr[i], arr[border + 1]];
+            border++;
+          }
+        }
+        return [arr, border];
+      }
+
+      // 4. 最后的快速排序
+      console.log(fn(arr, 10));
+    </script>
+
+    <script>
+      let S = "5F3Z-2e-9-w", K = 4
+      var licenseKeyFormatting = function (s, k) {
+        let str = s.split("-").join("");
+        let len = str.length;
+        let arr = [];
+        let rest = len % k;
+        let head = str.slice(0, rest);
+        str = str.slice(rest, len);
+        if (head) {
+          arr.push(head);
+        }
+        for (let i = 0; i < str.length; i += k) {
+          arr.push(str.substr(i, k).toUpperCase());
+        }
+        return arr.join('-')
+      };
+
+      console.log(licenseKeyFormatting(S, K));
+    </script>
+  </body>
+</html>
