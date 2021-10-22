@@ -66,24 +66,22 @@
     </script>
 
     <script>
-      let S = "5F3Z-2e-9-w", K = 4
-      var licenseKeyFormatting = function (s, k) {
-        let str = s.split("-").join("");
-        let len = str.length;
-        let arr = [];
-        let rest = len % k;
-        let head = str.slice(0, rest);
-        str = str.slice(rest, len);
-        if (head) {
-          arr.push(head);
-        }
-        for (let i = 0; i < str.length; i += k) {
-          arr.push(str.substr(i, k).toUpperCase());
-        }
-        return arr.join('-')
-      };
+      function majorityElement(nums) {
+        let count = 0;
+        let candidate = null;
+        nums.forEach((num) => {
+          if (count == 0) {
+            candidate = num;
+          }
+          count += num == candidate ? 1 : -1;
+        });
+        return candidate;
+      }
 
-      console.log(licenseKeyFormatting(S, K));
+      let arr1 = [1, 1, 1, 2, 2, 2, 3, 3];
+
+      console.log(majorityElement(arr1));
+      console.log(majorityElement(arr1));
     </script>
   </body>
 </html>
