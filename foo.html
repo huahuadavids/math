@@ -9,7 +9,9 @@
   <body>
     <h1>快速排序</h1>
     <script>
-      const arr = [1, 22, 3, 4, 55, 6, 7, 10, 88, 9, 10, 10];
+      const arr = [
+        11, 1, 0, 0.2, 333333, 22, 3, 4, 55, 6, 7, 10, 88, 9, 10, 10,
+      ];
 
       // 1. 直观解法
       // 缺点: 额外的空间，base不应该是固定的，否则最差情况是 O(n2)
@@ -61,11 +63,65 @@
         return [arr, border];
       }
 
-      // 4. 最后的快速排序
-      console.log(fn(arr, 10));
+      function devide3(arr, target) {
+        let border1 = -1;
+        let border2 = arr.length;
+        let i = 0;
+        while (i < border2) {
+          if (arr[i] < target) {
+            [arr[border1 + 1], arr[i]] = [arr[i], arr[border1 + 1]];
+            border1++;
+            i++;
+          } else if (arr[i] > target) {
+            [arr[border2 - 1], arr[i]] = [arr[i], arr[border2 - 1]];
+            border2--;
+          } else {
+            i++;
+          }
+        }
+        return [arr, border1, border2];
+      }
+
+      // 4 最终结果
+      function fn(arr, start, end) {
+        if (start < end) {
+          if (end - start === 1) {
+            if (arr[start] > arr[end]) {
+              [arr[start], arr[end]] = [arr[end], arr[start]];
+            }
+          } else {
+            const mid = start + ((Math.random() * (end - start)) | 0);
+            const target = arr[mid];
+            let border1 = start - 1;
+            let border2 = end + 1;
+            let i = start;
+            while (i < border2) {
+              if (arr[i] < target) {
+                [arr[border1 + 1], arr[i]] = [arr[i], arr[border1 + 1]];
+                border1++;
+                i++;
+              } else if (arr[i] > target) {
+                [arr[border2 - 1], arr[i]] = [arr[i], arr[border2 - 1]];
+                border2--;
+              } else {
+                i++;
+              }
+            }
+            if (border1 > start) {
+              fn(arr, start, border1);
+            }
+            if (border2 < end) {
+              fn(arr, border2, end);
+            }
+          }
+        }
+        return arr;
+      }
+      function quick(arr) {
+        return fn(arr, 0, arr.length - 1);
+      }
+
+      console.log(quick(arr));
     </script>
-
-
-
   </body>
 </html>
