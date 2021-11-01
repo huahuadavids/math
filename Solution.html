@@ -66,13 +66,13 @@
 
     <script>
       // todo
-      // https://leetcode-cn.com/problems/majority-element-ii/
       // https://leetcode-cn.com/problems/partitioning-into-minimum-number-of-deci-binary-numbers/
       // https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list-ii/
     </script>
 
     <script>
-      let nums1 = [4, 1, 2, 5],  nums2 = [1, 3, 4, 2, 5];
+      let nums1 = [4, 1, 2, 5],
+        nums2 = [1, 3, 4, 2, 5];
       var nextGreaterElement = function (nums1, nums2) {
         const map = new Map();
         const stack = [];
@@ -84,13 +84,10 @@
           map.set(num, stack.length ? stack[stack.length - 1] : -1);
           stack.push(num);
         }
-        return nums1.map(e => map.get(e));
+        return nums1.map((e) => map.get(e));
       };
 
-      console.log(nextGreaterElement(nums1, nums2))
-
-
+      console.log(nextGreaterElement(nums1, nums2));
     </script>
-
   </body>
 </html>
