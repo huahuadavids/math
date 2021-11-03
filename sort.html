@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 12 13 11
+      const arr = [
+        11, 1, 0, 0.2, 333333, 22, 3, 4, 55, 6, 7, 10, 88, 9, 10, 10,
+      ];
+
+      function foo(arr, target){
+        
+      }
+
+
+
+
+      function quickSort(arr) {
+        if (arr.length < 2) {
+          return arr;
+        }
+        const base = arr.pop();
+        const left = [],
+          right = [];
+        arr.forEach((e) => {
+          if (e <= base) {
+            left.push(e);
+          } else {
+            right.push(e);
+          }
+        });
+        return [...quickSort(left), base, ...quickSort(right)];
+      }
+    </script>
+  </body>
+</html>
