@@ -8,34 +8,64 @@
   </head>
   <body>
     <script>
-      // 12 13 11
-      const arr = [
-        11, 1, 0, 0.2, 333333, 22, 3, 4, 55, 6, 7, 10, 88, 9, 10, 10,
+      // https://leetcode-cn.com/problems/insert-interval/
+
+      let intervals = [
+          [1, 2],
+          [3, 5],
+          [6, 7],
+          [8, 10],
+          [12, 16],
+        ],
+        newInterval = [4, 8];
+
+      let out = [
+        [1, 2],
+        [3, 10],
+        [12, 16],
       ];
 
-      function foo(arr, target){
-        
-      }
+      // 1. 输入区间是不重叠的
+      var insert = function (arr, item) {
+        let prev = null;
+        let result = [];
+        // 代表 item是否被合并了
+        let merged = false;
 
-
-
-
-      function quickSort(arr) {
-        if (arr.length < 2) {
-          return arr;
-        }
-        const base = arr.pop();
-        const left = [],
-          right = [];
-        arr.forEach((e) => {
-          if (e <= base) {
-            left.push(e);
-          } else {
-            right.push(e);
+        const [left, right] = item;
+        for (let i = 0; i < arr.length; i++) {
+          const current = arr[i];
+          const [c1, c2] = current;
+          // 判断 item 是否在 current 区间内
+          if (c1 <= left && c2 >= right) {
+            return arr;
           }
-        });
-        return [...quickSort(left), base, ...quickSort(right)];
-      }
+          if (prev) {
+            // 判断
+          } else {
+            prev = current;
+            result.push(current);
+          }
+        }
+        return result;
+      };
+    </script>
+
+    <script>
+      // https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/
+      let map = [0, 0, 1, 2, 4];
+      // 1 2 3 4 5 6 7 8 9 10 11 12 
+      var demo = function (n) {
+        if (n < 4) {
+          return map[n];
+        }
+        for (let i = 4; i <= n; i++) {
+          let value1 = Math.max(i - 2 + map[i - 3], i - 2 + i - 1);
+          let value2 = Math.max(i - 3 + map[i - 4], i - 3 + i - 1);
+          let r = Math.min(value1, value2);
+          map[i] = r;
+        }
+      };
     </script>
   </body>
 </html>
