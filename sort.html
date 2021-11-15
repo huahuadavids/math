@@ -52,20 +52,50 @@
     </script>
 
     <script>
-      // https://leetcode-cn.com/problems/guess-number-higher-or-lower-ii/
-      let map = [0, 0, 1, 2, 4];
-      // 1 2 3 4 5 6 7 8 9 10 11 12 
-      var demo = function (n) {
-        if (n < 4) {
-          return map[n];
+      const arr = ["apple", "google"];
+
+      class TrieNode {
+        constructor(w) {
+          this.word = w;
+          this.nodes = {};
         }
-        for (let i = 4; i <= n; i++) {
-          let value1 = Math.max(i - 2 + map[i - 3], i - 2 + i - 1);
-          let value2 = Math.max(i - 3 + map[i - 4], i - 3 + i - 1);
-          let r = Math.min(value1, value2);
-          map[i] = r;
+      }
+
+      class Trie {
+        constructor(data) {
+          this.root = new TrieNode(null);
+          data.forEach((str) => {
+            this.insert(this.root, str);
+          });
         }
-      };
+        insert(node, str, index = 0) {
+          // 到最后一个字符
+          if (index > str.length - 1) {
+            return;
+          }
+          let word = str[index];
+          let n = node.nodes[word];
+          if (!n) {
+            n = new TrieNode(word);
+            node.nodes[word] = n;
+          }
+          this.insert(n, str, index + 1);
+        }
+
+        find(str, nodes = this.root.nodes, index = 0) {
+          if(str.length === index){
+            return true;
+          }
+          const word = str[index];
+          const n = nodes[word];
+          if (!n) {
+            return false;
+          }
+          return this.find(str, n.nodes, index + 1);
+        }
+      }
+
+      let tree = new Trie(["ho", "hi", "bala", "coco"]);
     </script>
   </body>
 </html>
