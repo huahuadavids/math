@@ -28,7 +28,7 @@
       // 1. 输入区间是不重叠的
       var insert = function (arr, item) {
         let prev = null;
-        let result = [];
+        let resultsult = [];
         // 代表 item是否被合并了
         let merged = false;
 
@@ -44,30 +44,28 @@
             // 判断
           } else {
             prev = current;
-            result.push(current);
+            resultsult.push(current);
           }
         }
-        return result;
+        return resultsult;
       };
     </script>
 
     <script>
-      const arr = ["apple", "google"];
-
-      class TrieNode {
-        constructor(w) {
-          this.word = w;
-          this.nodes = {};
-        }
+      function TrieNode() {
+        return {
+          nodes: {},
+        };
       }
 
       class Trie {
         constructor(data) {
-          this.root = new TrieNode(null);
+          this.root = TrieNode(null);
           data.forEach((str) => {
             this.insert(this.root, str);
           });
         }
+
         insert(node, str, index = 0) {
           // 到最后一个字符
           if (index > str.length - 1) {
@@ -76,14 +74,14 @@
           let word = str[index];
           let n = node.nodes[word];
           if (!n) {
-            n = new TrieNode(word);
+            n = TrieNode(word);
             node.nodes[word] = n;
           }
           this.insert(n, str, index + 1);
         }
 
         find(str, nodes = this.root.nodes, index = 0) {
-          if(str.length === index){
+          if (str.length === index) {
             return true;
           }
           const word = str[index];
@@ -93,9 +91,9 @@
           }
           return this.find(str, n.nodes, index + 1);
         }
+        // todo 删除一个字符串
+        delete(str) {}
       }
-
-      let tree = new Trie(["ho", "hi", "bala", "coco"]);
     </script>
   </body>
 </html>
