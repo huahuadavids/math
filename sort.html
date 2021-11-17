@@ -9,7 +9,6 @@
   <body>
     <script>
       // https://leetcode-cn.com/problems/insert-interval/
-
       let intervals = [
           [1, 2],
           [3, 5],
@@ -18,7 +17,6 @@
           [12, 16],
         ],
         newInterval = [4, 8];
-
       let out = [
         [1, 2],
         [3, 10],
@@ -53,19 +51,19 @@
 
     <script>
       function TrieNode() {
-        return {
-          nodes: {},
-        };
+        const res = Object.create(null);
+        const nodes = Object.create(null);
+        res.nodes = nodes;
+        return res;
       }
 
       class Trie {
         constructor(data) {
-          this.root = TrieNode(null);
+          this.root = new TrieNode(null);
           data.forEach((str) => {
             this.insert(this.root, str);
           });
         }
-
         insert(node, str, index = 0) {
           // 到最后一个字符
           if (index > str.length - 1) {
@@ -74,7 +72,7 @@
           let word = str[index];
           let n = node.nodes[word];
           if (!n) {
-            n = TrieNode(word);
+            n = new TrieNode(word);
             node.nodes[word] = n;
           }
           this.insert(n, str, index + 1);
@@ -91,9 +89,54 @@
           }
           return this.find(str, n.nodes, index + 1);
         }
-        // todo 删除一个字符串
-        delete(str) {}
       }
+
+      // 前缀树专题
+      // https://leetcode-cn.com/problems/word-break/
+      // https://leetcode-cn.com/problems/design-add-and-search-words-data-structure/
+      // https://leetcode-cn.com/problems/map-sum-pairs/
+      // https://leetcode-cn.com/problems/lexicographical-numbers/
+      // https://leetcode-cn.com/problems/top-k-frequent-words/
+      // https://leetcode-cn.com/problems/camelcase-matching/
+    </script>
+
+    <script>
+      let s = "applepenapple",
+        wordDict = ["apple", "pen"];
+
+      s = "111catsandog";
+      wordDict = ["cats", "dog", "sand", "and", "cat"];
+
+      function fn(arr, s) {}
+
+      var wordBreak = function (s, wordDict) {
+        let r = false;
+        for (let i = 0; i < wordDict.length; i++) {
+          let str = wordDict[i];
+          let index = s.indexOf(str);
+          if (index > -1) {
+            let str1 = s.slice(index, index + str.length);
+            r = fn(wordDict, str1);
+            if (r) {
+              return r;
+            }
+          }
+        }
+        return r;
+      };
+    </script>
+
+    <script>
+      // https://leetcode-cn.com/problems/maximum-product-of-word-lengths/
+      let a = ["abcw","baz","foo","bar","xtfn","abcdef"]; 
+
+      var maxProduct = function (words) {
+
+      };
+
+
+
+
     </script>
   </body>
 </html>
