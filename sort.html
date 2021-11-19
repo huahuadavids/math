@@ -8,6 +8,7 @@
   </head>
   <body>
     <script>
+      // https://leetcode-cn.com/problems/complex-number-multiplication/
       // https://leetcode-cn.com/problems/insert-interval/
       let intervals = [
           [1, 2],
@@ -59,12 +60,13 @@
 
       class Trie {
         constructor(data) {
-          this.root = new TrieNode(null);
+          this.root = TrieNode();
           data.forEach((str) => {
             this.insert(this.root, str);
           });
         }
-        insert(node, str, index = 0) {
+
+        insert(node = this.root, str, index = 0) {
           // 到最后一个字符
           if (index > str.length - 1) {
             return;
@@ -72,7 +74,7 @@
           let word = str[index];
           let n = node.nodes[word];
           if (!n) {
-            n = new TrieNode(word);
+            n = TrieNode();
             node.nodes[word] = n;
           }
           this.insert(n, str, index + 1);
@@ -90,6 +92,8 @@
           return this.find(str, n.nodes, index + 1);
         }
       }
+
+      console.log(new Trie(["h", "ho"]));
 
       // 前缀树专题
       // https://leetcode-cn.com/problems/word-break/
@@ -125,18 +129,6 @@
         return r;
       };
     </script>
-
-    <script>
-      // https://leetcode-cn.com/problems/maximum-product-of-word-lengths/
-      let a = ["abcw","baz","foo","bar","xtfn","abcdef"]; 
-
-      var maxProduct = function (words) {
-
-      };
-
-
-
-
-    </script>
+ 
   </body>
 </html>
