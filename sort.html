@@ -129,6 +129,34 @@
         return r;
       };
     </script>
- 
+
+    <script>
+      {
+        const nums = [1, 7, 3, 6, 5, 6];
+        var pivotIndex = function (nums) {
+          let sums = {}, total = 0;
+          let len = nums.length;
+          let index = -1;
+          sums[-1] = 0;
+          sums[len] = 0;
+          for (let i = 0; i < len; i++) {
+            let t = total + nums[i];
+            sums[i] = t;
+            total = t;
+          }
+          for (let a = 0; a < len; a++) {
+            let left = sums[a - 1];
+            let right = total - sums[a];
+            if (left === right) {
+              index = a;
+              break;
+            }
+          }
+          return index;
+        };
+
+        console.log(pivotIndex([1, -1, 2]));
+      }
+    </script>
   </body>
 </html>
