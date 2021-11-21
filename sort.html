@@ -159,6 +159,38 @@
       return root;
     }
   </script>
+  <script>
+    // https://leetcode-cn.com/problems/rotate-list/
+    let head = { "val": 1, "next": { "val": 2, "next": { "val": 3, "next": { "val": 4, "next": { "val": 5, "next": null } } } } }
+
+    var rotateRight = function (head, k) {
+      let len = 0;
+      let tmp = head;
+      while (tmp) {
+        len++
+        tmp = tmp.next;
+      }
+      let n = k % len;
+      if(n === 0){
+        return head;
+      }
+      let node;
+      let len1 = 0;
+      tmp = head;
+      while (tmp) {
+        len1++;
+        if(len1 === len -k){
+          node = tmp.next;
+          break;
+        }
+        tmp = tmp.next;
+      }
+      console.log(head)
+      console.log(node)
+      
+    };
+    rotateRight(head, 2)
+  </script>
 </body>
 
 </html>
