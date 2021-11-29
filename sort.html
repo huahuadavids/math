@@ -34,17 +34,17 @@
 
         const [left, right] = item;
         for (let i = 0; i < arr.length; i++) {
-          const current = arr[i];
-          const [c1, c2] = current;
-          // 判断 item 是否在 current 区间内
+          const tmpent = arr[i];
+          const [c1, c2] = tmpent;
+          // 判断 item 是否在 tmpent 区间内
           if (c1 <= left && c2 >= right) {
             return arr;
           }
           if (prev) {
             // 判断
           } else {
-            prev = current;
-            resultsult.push(current);
+            prev = tmpent;
+            resultsult.push(tmpent);
           }
         }
         return resultsult;
@@ -181,6 +181,70 @@
       // todo
       // https://leetcode-cn.com/problems/poor-pigs/
       // https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/
+    </script>
+    <script>
+      {
+        let reg = /[abcdedfg - [a - c]]/g;
+        let str = "uyy";
+        // 匹配1234
+        console.log(str.match(reg));
+      }
+    </script>
+    <script>
+      let arr = [1, 0, 1, 1, 0, 1, 1];
+
+      var findMaxLength = function (nums) {
+        let sums = [];
+        let total = 0;
+        nums.forEach((n) => {
+          total += n;
+          sums.push(total);
+        });
+        console.log(sums);
+      };
+      findMaxLength(arr);
+    </script>
+
+    <script>
+      // https://leetcode-cn.com/problems/reverse-linked-list-ii/
+      var reverseList = function (head) {
+        let result = null;
+        let current = head;
+        while (current) {
+          const nextNodes = current.next;
+          current.next = result;
+          result = current;
+          current = nextNodes;
+        }
+        return result;
+      };
+      var reverseList2 = function (head, left, right) {};
+    </script>
+
+    <script>
+      let nums = [0, -1, -2];
+
+      var longestConsecutive = function (nums) {
+        let num_set = new Set();
+        nums.forEach((n) => {
+          num_set.add(n);
+        });
+        let longestStreak = 0;
+        for (const num of num_set) {
+          if (!num_set.has(num - 1)) {
+            let currentNum = num;
+            let currentStreak = 1;
+            while (num_set.has(currentNum + 1)) {
+              currentNum += 1;
+              currentStreak += 1;
+            }
+            longestStreak = Math.max(longestStreak, currentStreak);
+          }
+        }
+        return longestStreak;
+      };
+
+      console.log(longestConsecutive(nums));
     </script>
   </body>
 </html>
