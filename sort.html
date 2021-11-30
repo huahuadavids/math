@@ -206,6 +206,8 @@
     </script>
 
     <script>
+      // todo
+      // https://zhuanlan.zhihu.com/p/85197826
       // https://leetcode-cn.com/problems/reverse-linked-list-ii/
       var reverseList = function (head) {
         let result = null;
@@ -218,7 +220,28 @@
         }
         return result;
       };
-      var reverseList2 = function (head, left, right) {};
+
+      const node1 = new ListNode(1);
+      const node2 = new ListNode(2);
+      const node3 = new ListNode(3);
+      const node4 = new ListNode(4);
+      const node5 = new ListNode(5);
+
+      var reverseList2 = function (head, left, right) {
+        let result = null;
+        let current = head;
+        let head1 = null;
+        while (current) {
+          if (current.val ===  left) {
+          }
+          const nextNodes = current.next;
+          // current.next = result;
+          // result = current;
+          current = nextNodes;
+        }
+        return result;
+      };
+      reverseList2(node1, 2, 4);
     </script>
   </body>
 </html>
