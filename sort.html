@@ -220,31 +220,5 @@
       };
       var reverseList2 = function (head, left, right) {};
     </script>
-
-    <script>
-      let nums = [0, -1, -2];
-
-      var longestConsecutive = function (nums) {
-        let num_set = new Set();
-        nums.forEach((n) => {
-          num_set.add(n);
-        });
-        let longestStreak = 0;
-        for (const num of num_set) {
-          if (!num_set.has(num - 1)) {
-            let currentNum = num;
-            let currentStreak = 1;
-            while (num_set.has(currentNum + 1)) {
-              currentNum += 1;
-              currentStreak += 1;
-            }
-            longestStreak = Math.max(longestStreak, currentStreak);
-          }
-        }
-        return longestStreak;
-      };
-
-      console.log(longestConsecutive(nums));
-    </script>
   </body>
 </html>
