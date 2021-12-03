@@ -2,6 +2,8 @@
 华华的算法学习之路，加油！
 
 ## 相关文章
+- [java入门](https://www.programiz.com/java-programming/hello-world)
+- [java tutorial](https://www.tutorialspoint.com/java/java_strings.htm)
 - [spring boot](https://cloud.tencent.com/developer/inventory/2004)
 - [labuladong的算法](https://github.com/labuladong/fucking-algorithm)
 - [js算法数据结构](https://github.com/trekhleb/javascript-algorithms/blob/master/README.zh-CN.md)

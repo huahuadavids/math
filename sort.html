@@ -183,7 +183,8 @@
       // https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/
     </script>
     <script>
-      // todo 链表
+      // 链表专题
+      // https://leetcode-cn.com/tag/linked-list/problemset/
       // https://zhuanlan.zhihu.com/p/85197826
       // https://leetcode-cn.com/problems/merge-k-sorted-lists/
       const node1 = new ListNode(1);
@@ -195,6 +196,41 @@
       node2.next = node3;
       node3.next = node4;
       node4.next = node5;
+
+      // https://leetcode-cn.com/problems/lMSNwu/
+      // https://leetcode-cn.com/problems/add-two-numbers-ii/
+      var addTwoNumbers = function (l1, l2) {
+        let list1 = [];
+        let p1 = l1;
+        while (p1) {
+          list1.push(p1.val);
+          p1 = p1.next;
+        }
+        let p2 = l2;
+        let list2 = [];
+        while (p2) {
+          list2.push(p2.val);
+          p2 = p2.next;
+        }
+        // 是否进位1
+        let make = 0;
+        // 公用数组
+        let arr = [];
+        // & 1 2 3
+        // 3 4 5 6
+        while (list1.length && list2.length) {
+          let list1Value = list1.pop();
+          let list2Value = list2.pop();
+          let sum = list1Value + list2Value + make;
+          if (sum > 9) {
+            make = 1;
+            arr.unshift(sum % 10);
+          } else {
+            make = 0;
+            arr.unshift(sum);
+          }
+        }
+      };
     </script>
 
     <script>
