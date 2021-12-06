@@ -1,15 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-</head>
+  <body>
+    <script>
+      // https://leetcode-cn.com/problems/nth-digit/
+      // 基数排序 需要复习!!!
+      var maximumGap = function (nums) {
+        const n = nums.length;
+        if (n < 2) {
+          return 0;
+        }
+        let exp = 1;
+        const buf = new Array(n).fill(0);
+        const maxVal = Math.max(...nums);
 
-<body>
-  <script type="text">
+        while (maxVal >= exp) {
+          const cnt = new Array(10).fill(0);
+          for (let i = 0; i < n; i++) {
+            let digit = Math.floor(nums[i] / exp) % 10;
+            cnt[digit]++;
+          }
+          for (let i = 1; i < 10; i++) {
+            cnt[i] += cnt[i - 1];
+          }
+          for (let i = n - 1; i >= 0; i--) {
+            let digit = Math.floor(nums[i] / exp) % 10;
+            buf[cnt[digit] - 1] = nums[i];
+            cnt[digit]--;
+          }
+          nums.splice(0, n, ...buf);
+          exp *= 10;
+        }
+
+        let ret = 0;
+        for (let i = 1; i < n; i++) {
+          ret = Math.max(ret, nums[i] - nums[i - 1]);
+        }
+        return ret;
+      };
+    </script>
+
+    <script type="text">
       // https://leetcode-cn.com/problems/complex-number-multiplication/
       // https://leetcode-cn.com/problems/insert-interval/
       let intervals = [
@@ -52,7 +89,7 @@
       };
     </script>
 
-  <script type="text">
+    <script type="text">
       function TrieNode() {
         const res = Object.create(null);
         const nodes = Object.create(null);
@@ -106,172 +143,95 @@
       // https://leetcode-cn.com/problems/camelcase-matching/
     </script>
 
-  <script>
-    let s = "applepenapple",
-      wordDict = ["apple", "pen"];
+    <script>
+      let s = "applepenapple",
+        wordDict = ["apple", "pen"];
 
-    s = "111catsandog";
-    wordDict = ["cats", "dog", "sand", "and", "cat"];
+      s = "111catsandog";
+      wordDict = ["cats", "dog", "sand", "and", "cat"];
 
-    function fn(arr, s) { }
+      function fn(arr, s) {}
 
-    var wordBreak = function (s, wordDict) {
-      let r = false;
-      for (let i = 0; i < wordDict.length; i++) {
-        let str = wordDict[i];
-        let index = s.indexOf(str);
-        if (index > -1) {
-          let str1 = s.slice(index, index + str.length);
-          r = fn(wordDict, str1);
-          if (r) {
-            return r;
+      var wordBreak = function (s, wordDict) {
+        let r = false;
+        for (let i = 0; i < wordDict.length; i++) {
+          let str = wordDict[i];
+          let index = s.indexOf(str);
+          if (index > -1) {
+            let str1 = s.slice(index, index + str.length);
+            r = fn(wordDict, str1);
+            if (r) {
+              return r;
+            }
           }
         }
-      }
-      return r;
-    };
-  </script>
+        return r;
+      };
+    </script>
 
-  <script>
-    let Node = function (num, left, right) {
-      let node = Object.create(null);
-      node.value = num;
-      node.left = left === null ? null : Node(left, null, null);
-      node.right = left === null ? null : Node(right, null, null);
-      return node;
-    };
+    <script>
+      let Node = function (num, left, right) {
+        let node = Object.create(null);
+        node.value = num;
+        node.left = left === null ? null : Node(left, null, null);
+        node.right = left === null ? null : Node(right, null, null);
+        return node;
+      };
 
-    const left = Node(9, 3, 12);
-    const right = Node(23, 17, 28);
-    const root = Node(15, null, null);
-    left.left.right = Node(8, null, null);
-    root.left = left;
-    root.right = right;
+      const left = Node(9, 3, 12);
+      const right = Node(23, 17, 28);
+      const root = Node(15, null, null);
+      left.left.right = Node(8, null, null);
+      root.left = left;
+      root.right = right;
 
-    function deleteNode(root, value) {
-      if (root) {
-        if (root.value === value) {
+      function deleteNode(root, value) {
+        if (root) {
+          if (root.value === value) {
+          }
         }
+        return root;
       }
-      return root;
-    }
 
-    function toMap(str) {
-      let map = {};
-      for (let i = 0; i < str.length; i++) {
-        let char = str[i];
-        if (map[char]) {
-          map[char]++;
-        } else {
-          map[char] = 1;
+      function toMap(str) {
+        let map = {};
+        for (let i = 0; i < str.length; i++) {
+          let char = str[i];
+          if (map[char]) {
+            map[char]++;
+          } else {
+            map[char] = 1;
+          }
         }
+        return map;
       }
-      return map;
-    }
 
-    function ListNode(val, next) {
-      const node = Object.create(null);
-      node.val = val === undefined ? 0 : val;
-      node.next = next === undefined ? null : next;
-      return node;
-    }
-  </script>
-  <script>
-    let arr1 = [1, 2, 3, 1];
-    let arr2 = [2, 2, 3, 1];
+      function ListNode(val, next) {
+        const node = Object.create(null);
+        node.val = val === undefined ? 0 : val;
+        node.next = next === undefined ? null : next;
+        return node;
+      }
+    </script>
+    <script>
+      let arr1 = [1, 2, 3, 1];
+      let arr2 = [2, 2, 3, 1];
       // todo
       // https://leetcode-cn.com/problems/poor-pigs/
       // https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/
-  </script>
-  <script>
-    // 链表专题
-    // https://leetcode-cn.com/tag/linked-list/problemset/
-    // https://zhuanlan.zhihu.com/p/85197826
-    // https://leetcode-cn.com/problems/merge-k-sorted-lists/
-    const node1 = new ListNode(1);
-    const node2 = new ListNode(3);
-    const node3 = new ListNode(3);
-    const node4 = new ListNode(4);
-    const node5 = new ListNode(4);
-    node1.next = node2;
-    node2.next = node3;
-    node3.next = node4;
-    node4.next = node5;
-
-    // https://leetcode-cn.com/problems/lMSNwu/
-    // https://leetcode-cn.com/problems/add-two-numbers-ii/
-    var addTwoNumbers = function (l1, l2) {
-      let list1 = [];
-      let p1 = l1;
-      while (p1) {
-        list1.push(p1.val);
-        p1 = p1.next;
-      }
-      let p2 = l2;
-      let list2 = [];
-      while (p2) {
-        list2.push(p2.val);
-        p2 = p2.next;
-      }
-      // 是否进位1
-      let make = 0;
-      // 公用数组
-      let arr = [];
-      // & 1 2 3
-      // 3 4 5 6
-      while (list1.length && list2.length) {
-        let list1Value = list1.pop();
-        let list2Value = list2.pop();
-        let sum = list1Value + list2Value + make;
-        if (sum > 9) {
-          make = 1;
-          arr.unshift(sum % 10);
-        } else {
-          make = 0;
-          arr.unshift(sum);
-        }
-      }
-    };
-  </script>
-
-  <script>
-    // https://leetcode-cn.com/problems/nth-digit/
-    // 基数排序 需要复习!!!
-    var maximumGap = function (nums) {
-      const n = nums.length;
-      if (n < 2) {
-        return 0;
-      }
-      let exp = 1;
-      const buf = new Array(n).fill(0);
-      const maxVal = Math.max(...nums);
-
-      while (maxVal >= exp) {
-        const cnt = new Array(10).fill(0);
-        for (let i = 0; i < n; i++) {
-          let digit = Math.floor(nums[i] / exp) % 10;
-          cnt[digit]++;
-        }
-        for (let i = 1; i < 10; i++) {
-          cnt[i] += cnt[i - 1];
-        }
-        for (let i = n - 1; i >= 0; i--) {
-          let digit = Math.floor(nums[i] / exp) % 10;
-          buf[cnt[digit] - 1] = nums[i];
-          cnt[digit]--;
-        }
-        nums.splice(0, n, ...buf);
-        exp *= 10;
-      }
-
-      let ret = 0;
-      for (let i = 1; i < n; i++) {
-        ret = Math.max(ret, nums[i] - nums[i - 1]);
-      }
-      return ret;
-    };
-  </script>
-
-</body>
-
+    </script>
+    <script>
+      // https://leetcode-cn.com/problems/merge-k-sorted-lists/
+      // https://leetcode-cn.com/problems/lMSNwu/
+      const node1 = new ListNode(1);
+      const node2 = new ListNode(2);
+      const node3 = new ListNode(3);
+      const node4 = new ListNode(4);
+      const node5 = new ListNode(5);
+      node1.next = node2;
+      node2.next = node3;
+      node3.next = node4;
+      node4.next = node5;
+    </script>
+  </body>
 </html>

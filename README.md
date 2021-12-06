@@ -2,6 +2,7 @@
 华华的算法学习之路，加油！
 
 ## 相关文章
+- [算法列表-good](https://www.programiz.com/dsa/data-structure-types)
 - [java入门](https://www.programiz.com/java-programming/hello-world)
 - [java tutorial](https://www.tutorialspoint.com/java/java_strings.htm)
 - [spring boot](https://cloud.tencent.com/developer/inventory/2004)
