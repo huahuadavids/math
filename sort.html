@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <script>
-      // https://leetcode-cn.com/problems/nth-digit/
-      // 基数排序 需要复习!!!
-      var maximumGap = function (nums) {
-        const n = nums.length;
-        if (n < 2) {
-          return 0;
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="https://static.leetcode-cn.com/cn-mono-assets/production/assets/favicon-notification-32x32.3f045777.png" sizes="32x32" data-react-helmet="true">
+  <link rel="shortcut icon" href="https://static.leetcode-cn.com/cn-mono-assets/production/assets/favicon-notification-32x32.3f045777.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>水滴石川</title>
+</head>
+
+<body>
+  <script src="leetcode.js"></script>
+  <script>
+    // https://leetcode-cn.com/problems/nth-digit/
+    // 基数排序 需要复习!!!
+    var maximumGap = function(nums) {
+      const n = nums.length;
+      if (n < 2) {
+        return 0;
+      }
+      let exp = 1;
+      const buf = new Array(n).fill(0);
+      const maxVal = Math.max(...nums);
+      while (maxVal >= exp) {
+        const cnt = new Array(10).fill(0);
+        for (let i = 0; i < n; i++) {
+          let digit = Math.floor(nums[i] / exp) % 10;
+          cnt[digit]++;
         }
-        let exp = 1;
-        const buf = new Array(n).fill(0);
-        const maxVal = Math.max(...nums);
-
-        while (maxVal >= exp) {
-          const cnt = new Array(10).fill(0);
-          for (let i = 0; i < n; i++) {
-            let digit = Math.floor(nums[i] / exp) % 10;
-            cnt[digit]++;
-          }
-          for (let i = 1; i < 10; i++) {
-            cnt[i] += cnt[i - 1];
-          }
-          for (let i = n - 1; i >= 0; i--) {
-            let digit = Math.floor(nums[i] / exp) % 10;
-            buf[cnt[digit] - 1] = nums[i];
-            cnt[digit]--;
-          }
-          nums.splice(0, n, ...buf);
-          exp *= 10;
+        for (let i = 1; i < 10; i++) {
+          cnt[i] += cnt[i - 1];
         }
-
-        let ret = 0;
-        for (let i = 1; i < n; i++) {
-          ret = Math.max(ret, nums[i] - nums[i - 1]);
+        for (let i = n - 1; i >= 0; i--) {
+          let digit = Math.floor(nums[i] / exp) % 10;
+          buf[cnt[digit] - 1] = nums[i];
+          cnt[digit]--;
         }
-        return ret;
-      };
-    </script>
-
-    <script type="text">
-      // https://leetcode-cn.com/problems/complex-number-multiplication/
+        nums.splice(0, n, ...buf);
+        exp *= 10;
+      }
+      let ret = 0;
+      for (let i = 1; i < n; i++) {
+        ret = Math.max(ret, nums[i] - nums[i - 1]);
+      }
+      return ret;
+    };
+  </script>
+  <script type="text"> // https://leetcode-cn.com/problems/complex-number-multiplication/
       // https://leetcode-cn.com/problems/insert-interval/
       let intervals = [
           [1, 2],
@@ -88,150 +88,47 @@
         return resultsult;
       };
     </script>
+  <script>
+    // 前缀树专题
+    // https://leetcode-cn.com/problems/word-break/
+    // https://leetcode-cn.com/problems/design-add-and-search-words-data-structure/
+    // https://leetcode-cn.com/problems/map-sum-pairs/
+    // https://leetcode-cn.com/problems/lexicographical-numbers/
+    // https://leetcode-cn.com/problems/top-k-frequent-words/
+    // https://leetcode-cn.com/problems/camelcase-matching/
+  </script>
+  <script>
+    let arr1 = [1, 2, 3, 1];
+    let arr2 = [2, 2, 3, 1];
+    // todo
+    // https://leetcode-cn.com/problems/poor-pigs/
+    // https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/
+  </script>
+  <script>
+    /**
+     * @title 链表专题
+     */
+    // https://leetcode-cn.com/problems/merge-k-sorted-lists/
+    const node0 = new ListNode(0);
+    const node1 = new ListNode(1);
+    const node2 = new ListNode(2);
+    const node3 = new ListNode(3);
+    const node4 = new ListNode(4);
+    const node5 = new ListNode(5);
 
-    <script type="text">
-      function TrieNode() {
-        const res = Object.create(null);
-        const nodes = Object.create(null);
-        res.nodes = nodes;
-        return res;
-      }
+    node0.next = node1;
+    node1.next = node2;
+    node2.next = node3;
+    node3.next = node4;
+    node4.next = node5;
 
-      class Trie {
-        constructor(data) {
-          this.root = TrieNode();
-          data.forEach((str) => {
-            this.insert(this.root, str);
-          });
-        }
+    let tree0 = new TreeNode(0);
+    let tree1 = new TreeNode(1);
+    let tree2 = new TreeNode(3);
+    tree0.left = tree1;
+    tree0.right = tree2;
+    tree2.left = new TreeNode(4);
+  </script>
+</body>
 
-        insert(node = this.root, str, index = 0) {
-          // 到最后一个字符
-          if (index > str.length - 1) {
-            return;
-          }
-          let word = str[index];
-          let n = node.nodes[word];
-          if (!n) {
-            n = TrieNode();
-            node.nodes[word] = n;
-          }
-          this.insert(n, str, index + 1);
-        }
-
-        find(str, nodes = this.root.nodes, index = 0) {
-          if (str.length === index) {
-            return true;
-          }
-          const word = str[index];
-          const n = nodes[word];
-          if (!n) {
-            return false;
-          }
-          return this.find(str, n.nodes, index + 1);
-        }
-      }
-
-      console.log(new Trie(["h", "ho"]));
-
-      // 前缀树专题
-      // https://leetcode-cn.com/problems/word-break/
-      // https://leetcode-cn.com/problems/design-add-and-search-words-data-structure/
-      // https://leetcode-cn.com/problems/map-sum-pairs/
-      // https://leetcode-cn.com/problems/lexicographical-numbers/
-      // https://leetcode-cn.com/problems/top-k-frequent-words/
-      // https://leetcode-cn.com/problems/camelcase-matching/
-    </script>
-
-    <script>
-      let s = "applepenapple",
-        wordDict = ["apple", "pen"];
-
-      s = "111catsandog";
-      wordDict = ["cats", "dog", "sand", "and", "cat"];
-
-      function fn(arr, s) {}
-
-      var wordBreak = function (s, wordDict) {
-        let r = false;
-        for (let i = 0; i < wordDict.length; i++) {
-          let str = wordDict[i];
-          let index = s.indexOf(str);
-          if (index > -1) {
-            let str1 = s.slice(index, index + str.length);
-            r = fn(wordDict, str1);
-            if (r) {
-              return r;
-            }
-          }
-        }
-        return r;
-      };
-    </script>
-
-    <script>
-      let Node = function (num, left, right) {
-        let node = Object.create(null);
-        node.value = num;
-        node.left = left === null ? null : Node(left, null, null);
-        node.right = left === null ? null : Node(right, null, null);
-        return node;
-      };
-
-      const left = Node(9, 3, 12);
-      const right = Node(23, 17, 28);
-      const root = Node(15, null, null);
-      left.left.right = Node(8, null, null);
-      root.left = left;
-      root.right = right;
-
-      function deleteNode(root, value) {
-        if (root) {
-          if (root.value === value) {
-          }
-        }
-        return root;
-      }
-
-      function toMap(str) {
-        let map = {};
-        for (let i = 0; i < str.length; i++) {
-          let char = str[i];
-          if (map[char]) {
-            map[char]++;
-          } else {
-            map[char] = 1;
-          }
-        }
-        return map;
-      }
-
-      function ListNode(val, next) {
-        const node = Object.create(null);
-        node.val = val === undefined ? 0 : val;
-        node.next = next === undefined ? null : next;
-        return node;
-      }
-    </script>
-    <script>
-      let arr1 = [1, 2, 3, 1];
-      let arr2 = [2, 2, 3, 1];
-      // todo
-      // https://leetcode-cn.com/problems/poor-pigs/
-      // https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/
-    </script>
-    <script>
-      // https://leetcode-cn.com/problems/merge-k-sorted-lists/
-      // https://leetcode-cn.com/problems/lMSNwu/
-      const node1 = new ListNode(1);
-      const node2 = new ListNode(2);
-      const node3 = new ListNode(3);
-      const node4 = new ListNode(4);
-      const node5 = new ListNode(5);
-      node1.next = node2;
-      node2.next = node3;
-      node3.next = node4;
-      node4.next = node5;
-    </script>
-  </body>
 </html>
