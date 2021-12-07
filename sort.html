@@ -12,41 +12,7 @@
 
 <body>
   <script src="leetcode.js"></script>
-  <script>
-    // https://leetcode-cn.com/problems/nth-digit/
-    // 基数排序 需要复习!!!
-    var maximumGap = function(nums) {
-      const n = nums.length;
-      if (n < 2) {
-        return 0;
-      }
-      let exp = 1;
-      const buf = new Array(n).fill(0);
-      const maxVal = Math.max(...nums);
-      while (maxVal >= exp) {
-        const cnt = new Array(10).fill(0);
-        for (let i = 0; i < n; i++) {
-          let digit = Math.floor(nums[i] / exp) % 10;
-          cnt[digit]++;
-        }
-        for (let i = 1; i < 10; i++) {
-          cnt[i] += cnt[i - 1];
-        }
-        for (let i = n - 1; i >= 0; i--) {
-          let digit = Math.floor(nums[i] / exp) % 10;
-          buf[cnt[digit] - 1] = nums[i];
-          cnt[digit]--;
-        }
-        nums.splice(0, n, ...buf);
-        exp *= 10;
-      }
-      let ret = 0;
-      for (let i = 1; i < n; i++) {
-        ret = Math.max(ret, nums[i] - nums[i - 1]);
-      }
-      return ret;
-    };
-  </script>
+
   <script type="text"> // https://leetcode-cn.com/problems/complex-number-multiplication/
       // https://leetcode-cn.com/problems/insert-interval/
       let intervals = [
@@ -108,7 +74,6 @@
     /**
      * @title 链表专题
      */
-    // https://leetcode-cn.com/problems/merge-k-sorted-lists/
     const node0 = new ListNode(0);
     const node1 = new ListNode(1);
     const node2 = new ListNode(2);
@@ -128,6 +93,27 @@
     tree0.left = tree1;
     tree0.right = tree2;
     tree2.left = new TreeNode(4);
+    // https://leetcode-cn.com/problems/partition-list-lcci/
+    var partition = function(head, x) {
+      if (head) {
+        let p = head;
+        let left = [];
+        let right = [];
+        while (p) {
+          if (p < x) {
+            left.push(p.val)
+          } else {
+            right.push(p.val)
+          }
+          p = p.next;
+        }
+        if (left.length === 0) {
+          return head;
+        }
+      } else {
+        return head;
+      }
+    };
   </script>
 </body>
 

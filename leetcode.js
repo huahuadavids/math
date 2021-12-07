@@ -41,6 +41,25 @@ function toMap(str) {
   return map;
 }
 
+/**
+ * @title 判断map1 和 map2是否相等
+ * @param {*} map1 
+ * @param {*} map2 
+ * @returns 
+ */
+function map12(map1, map2) {
+  for (let key in map1) {
+    if (map2[key] === undefined || map2[key] !== map1[key]) {
+      return false;
+    }
+  }
+  return true;
+}
+
+function isSameMap(map1, map2) {
+  return map12(map1, map2) && map12(map2, map1)
+}
+
 
 /**
  * @title 二叉树层次遍历
@@ -87,6 +106,20 @@ function arrayTolinkedList(arr) {
     p = node;
   }
   return temp.next;
+}
+
+/**
+ * @title 链表转数组
+ * @param {*} head 
+ * @returns 
+ */
+function linkedList2Array(head) {
+  let r = [];
+  while (head) {
+    r.push(head.val)
+    head = head.next;
+  }
+  return r;
 }
 
 /**
