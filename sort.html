@@ -14,7 +14,7 @@
   <script src="leetcode.js"></script>
 
   <script type="text">
-      // https://leetcode-cn.com/problems/complex-number-multiplication/
+    // https://leetcode-cn.com/problems/complex-number-multiplication/
       // https://leetcode-cn.com/problems/insert-interval/
       let intervals = [
           [1, 2],
@@ -94,26 +94,10 @@
     tree0.left = tree1;
     tree0.right = tree2;
     tree2.left = new TreeNode(4);
-    // https://leetcode-cn.com/problems/partition-list-lcci/
-    var partition = function(head, x) {
-      if (head) {
-        let p = head;
-        let left = [];
-        let right = [];
-        while (p) {
-          if (p < x) {
-            left.push(p.val)
-          } else {
-            right.push(p.val)
-          }
-          p = p.next;
-        }
-        if (left.length === 0) {
-          return head;
-        }
-      } else {
-        return head;
-      }
+
+    var detectCycle = function(head) {
+      let slow = head;
+      let fast = head;
     };
   </script>
 </body>
