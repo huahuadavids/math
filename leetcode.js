@@ -167,3 +167,22 @@ class Trie {
     return this.find(str, n.nodes, index + 1);
   }
 }
+
+/**
+ * @title 字符串转二进制数组，最后转为整数
+ * @param {*} s 
+ * @returns 
+ */
+function toBinary(s) {
+  s = s.toLocaleLowerCase();
+  let nums = new Array(26).fill(0);
+  for (let i = 0; i < s.length; i++) {
+    let c = s.charCodeAt(i);
+    if (c >= 97 && c <= 122) {
+      let index = c - 97;
+      nums[index] = 1; 
+    }
+  }
+  let n = nums.join('');
+  return parseInt(n, 2);
+}
