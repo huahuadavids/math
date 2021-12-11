@@ -180,9 +180,47 @@ function toBinary(s) {
     let c = s.charCodeAt(i);
     if (c >= 97 && c <= 122) {
       let index = c - 97;
-      nums[index] = 1; 
+      nums[index] = 1;
     }
   }
   let n = nums.join('');
   return parseInt(n, 2);
+}
+
+/**
+ * @title add 两个数组数组 arr1长度大于arr2的长度
+ * @param {*} arr1 
+ * @param {*} arr2 
+ */
+function addNumberArray(arr1, arr2) {
+  let r = [];
+  // 超过10
+  let p = 0;
+  while (arr2.length) {
+    let v2 = arr2.pop();
+    let v1 = arr1.pop();
+    let sum = v1 + v2 + p;
+    if (sum < 10) {
+      r.unshift(sum)
+      p = 0;
+    } else {
+      r.unshift(sum - 10)
+      p = 1;
+    }
+  }
+  while (arr1.length) {
+    let v1 = arr1.pop();
+    let sum = v1 + p;
+    if (sum < 10) {
+      r.unshift(sum)
+      p = 0;
+    } else {
+      r.unshift(sum - 10)
+      p = 1;
+    }
+  }
+  if (p) {
+    r.unshift(1)
+  }
+  return r;
 }
