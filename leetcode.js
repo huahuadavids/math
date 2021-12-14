@@ -123,6 +123,27 @@ function linkedList2Array(head) {
 }
 
 /**
+ * @title 反转链表
+ * @param {*} head 
+ * @returns 
+ */
+var reverseList = function(head) {
+  if (!head) {
+    return null
+  }
+  let newHead = null;
+  let tmp;
+  while (head) {
+    tmp = head.next;
+    head.next = newHead;
+    newHead = head;
+    head = tmp;
+  }
+  return newHead;
+};
+
+
+/**
  * @title 前缀树
  * @returns 
  */
