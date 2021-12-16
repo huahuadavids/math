@@ -24,15 +24,14 @@
     // https://leetcode-cn.com/problems/insert-interval/
 
     // todo
-    // LRU缓存机制 + 跳表
+    // LRU缓存机制 + 跳表 + 拓扑排序
     // https://leetcode-cn.com/problems/poor-pigs/
     // https://leetcode-cn.com/problems/maximum-length-of-repeated-subarray/
     // https://leetcode-cn.com/problems/course-schedule-iii/
+    // https://leetcode-cn.com/problems/loud-and-rich/
+    // https://leetcode-cn.com/problems/maximum-number-of-visible-points/
   </script>
-  <script>
-    /**
-     * @title 链表专题
-     */
+  <script name='链表专题'>
     const node0 = new ListNode(0);
     const node1 = new ListNode(1);
     const node2 = new ListNode(2);
@@ -46,25 +45,25 @@
     node3.next = node4;
     node4.next = node5;
 
-    const line0 = new ListNode(0);
+    const line0 = new ListNode(2);
     const line1 = new ListNode(1);
     const line2 = new ListNode(2);
-    const line3 = new ListNode(3);
-    const line4 = new ListNode(4);
-    const line5 = new ListNode(5);
+    const line3 = new ListNode(-3);
+    const line4 = new ListNode(1);
 
     line0.next = line1;
     line1.next = line2;
     line2.next = line3;
     line3.next = line4;
-    line4.next = line5;
+  </script>
 
-    let tree0 = new TreeNode(0);
+  <script name='树'>
+    // https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/
+    let tree0 = new TreeNode(2);
     let tree1 = new TreeNode(1);
     let tree2 = new TreeNode(3);
     tree0.left = tree1;
     tree0.right = tree2;
-    tree2.left = new TreeNode(4);
   </script>
 </body>
 
