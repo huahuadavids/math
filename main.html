@@ -3,9 +3,6 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/png" href="https://static.leetcode-cn.com/cn-mono-assets/production/assets/favicon-notification-32x32.3f045777.png" sizes="32x32" data-react-helmet="true">
-  <link rel="shortcut icon" href="https://static.leetcode-cn.com/cn-mono-assets/production/assets/favicon-notification-32x32.3f045777.png">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>水滴石川</title>
 </head>
@@ -33,8 +30,9 @@
     // https://leetcode-cn.com/problems/course-schedule-iii/
     // https://leetcode-cn.com/problems/loud-and-rich/
     // https://leetcode-cn.com/problems/maximum-number-of-visible-points/
+    // https://leetcode-cn.com/problems/longest-duplicate-substring/
   </script>
-  <script name='链表专题'>
+  <script name='链表'>
     const node0 = new ListNode(0);
     const node1 = new ListNode(1);
     const node2 = new ListNode(2);
@@ -58,9 +56,11 @@
     line1.next = line2;
     line2.next = line3;
     line3.next = line4;
+
+    // https://leetcode-cn.com/problems/reverse-nodes-in-even-length-groups/
   </script>
 
-  <script>
+  <script name='树'>
     // https://leetcode-cn.com/problems/count-complete-tree-nodes/
     // https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/
     let tree0 = new TreeNode(2);
@@ -71,10 +71,85 @@
   </script>
 
   <script name="单调栈">
+    // https://leetcode-cn.com/tag/monotonic-stack/problemset/
+    // https://leetcode-cn.com/problems/smallest-subsequence-of-distinct-characters/
     // https://leetcode-cn.com/problems/next-greater-element-ii/
     // https://leetcode-cn.com/problems/largest-rectangle-in-histogram/
     // https://blog.csdn.net/lucky52529/article/details/89155694
   </script>
+  <script>
+    let arr1 = [100, 3, 67];
+    let arr2 = [100, 3, 67, 1, 5];
+    let arr20 = [100, 67, 1, 5];
+    let arr21 = [100, 2, 3, 2, 1, 67];
+
+    let arr2 = [100, 3, 2, 65, 67];
+    let arr3 = [5, 0, 1, 2, 0, 2];
+
+    function fn(arr, left, right) {
+      let min = Math.min(arr[left], arr[right])
+      let total = 0;
+      for (let i = left + 1; i < right; i++) {
+        total += (min - arr[i])
+      }
+      return total;
+    }
+
+    var trap = function(height) {
+      let len = height.length;
+      if (len < 3) {
+        return 0;
+      }
+      let r = 0;
+      let left = 0,
+        right = 1;
+      let has = false;
+      while (left < len - 1) {
+        if (height[right] < height[left]) {
+          // 到最右边了
+          if (right === len - 1) {
+            // 是否可积水
+            let shape = true;
+            // 分两种情况，右界是否和左界，都大于中间的数，如果是计算，否则移动左指针
+            for (let i = left + 1; i < right; i++) {
+              if (height[right] <= height[i]) {
+                shape = false;
+                break;
+              }
+            }
+
+            // 完全闭合为 V
+            if (shape) {
+              r += fn(height, left, right)
+              break;
+            } else {
+              // 如果没闭合，要考虑 todo
+
+
+              left++;
+              right = left + 1;
+            }
+          } else {
+            right++;
+          }
+        } else {
+          // 闭合为 V型, 正常计算
+          r += fn(height, left, right)
+          left = right;
+          right = left + 1;
+        }
+      }
+      return r;
+    };
+
+    console.log(trap(arr2))
+    console.log(trap(arr3))
+  </script>
+
+  <script>
+
+  </script>
+
 
 </body>
 
