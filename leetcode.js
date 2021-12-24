@@ -142,6 +142,31 @@ var reverseList = function(head) {
   return newHead;
 };
 
+/**
+ * @title 反转链表，返回头尾
+ * @param {*} head 
+ * @returns 
+ */
+var reverseListWithTail = function(head) {
+  if (!head) {
+    return null
+  }
+  let newHead = null;
+  let newTail = null;
+  let tmp;
+  while (head) {
+    tmp = head.next;
+    head = new ListNode(head.val);
+    head.next = newHead;
+    newHead = head;
+    if (newTail === null) {
+      newTail = head;
+    }
+    head = tmp;
+  }
+  return [newHead, newTail];
+};
+
 
 /**
  * @title 前缀树
