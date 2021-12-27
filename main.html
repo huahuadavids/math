@@ -9,6 +9,11 @@
 
 <body>
   <script src="leetcode.js"></script>
+  <script>
+    let simples = [
+      'https://leetcode-cn.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/'
+    ]
+  </script>
 
   <script name='todo'>
     // todo
@@ -74,11 +79,50 @@
   <script name='树'>
     // https://leetcode-cn.com/problems/count-complete-tree-nodes/
     // https://leetcode-cn.com/problems/binary-search-tree-to-greater-sum-tree/
-    let tree0 = new TreeNode(2);
-    let tree1 = new TreeNode(1);
+    let tree0 = new TreeNode(1);
+    let tree1 = new TreeNode(2);
     let tree2 = new TreeNode(3);
     tree0.left = tree1;
     tree0.right = tree2;
+    tree1.left = new TreeNode(4)
+    tree1.right = new TreeNode(6)
+    tree2.left = new TreeNode(5)
+    tree2.right = new TreeNode(7)
+
+    function preOrderWalk(root) {
+      let stack = [];
+      stack.push(root);
+      while (stack.length) {
+        let node = stack.pop();
+        // console.log(node.val);
+        if (node.right) {
+          stack.push(node.right);
+        }
+        if (node.left) {
+          stack.push(node.left);
+        }
+      }
+    }
+
+    function postOrderWalk(root) {
+      let stack = [];
+      let s = [];
+      stack.push(root);
+      while (stack.length) {
+        let node = stack.pop();
+        s.push(node)
+        if (node.left) {
+          stack.push(node.left);
+        }
+        if (node.right) {
+          stack.push(node.right);
+        }
+      }
+      while (s.length) {
+        let node = s.pop();
+        console.log(node.val)
+      }
+    }
   </script>
 
   <script name='单调栈'>
@@ -107,7 +151,7 @@
       return total;
     }
 
-    var trap = function(height) {
+    var trap = function (height) {
       let len = height.length;
       if (len < 3) {
         return 0;
