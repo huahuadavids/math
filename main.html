@@ -40,7 +40,7 @@
     // https://leetcode-cn.com/problems/maximum-number-of-visible-points/
     // https://leetcode-cn.com/problems/longest-duplicate-substring/
     // https://leetcode-cn.com/problems/maximum-number-of-eaten-apples/
-    // 
+    //
   </script>
   <script>
     // 前缀树专题
@@ -89,39 +89,8 @@
     tree2.left = new TreeNode(5)
     tree2.right = new TreeNode(7)
 
-    function preOrderWalk(root) {
-      let stack = [];
-      stack.push(root);
-      while (stack.length) {
-        let node = stack.pop();
-        // console.log(node.val);
-        if (node.right) {
-          stack.push(node.right);
-        }
-        if (node.left) {
-          stack.push(node.left);
-        }
-      }
-    }
+    function inOrderWalk() {
 
-    function postOrderWalk(root) {
-      let stack = [];
-      let s = [];
-      stack.push(root);
-      while (stack.length) {
-        let node = stack.pop();
-        s.push(node)
-        if (node.left) {
-          stack.push(node.left);
-        }
-        if (node.right) {
-          stack.push(node.right);
-        }
-      }
-      while (s.length) {
-        let node = s.pop();
-        console.log(node.val)
-      }
     }
   </script>
 
