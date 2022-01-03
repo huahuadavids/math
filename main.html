@@ -89,50 +89,7 @@
     // tree1.right = new TreeNode(6)
     // tree2.left = new TreeNode(5)
     // tree2.right = new TreeNode(7)
-
-<<<<<<< HEAD
-    
-     // 层次遍历，比如 1 2 3 
-    // currentLevelLastnode; 表示当前节点最后一个节点，就是1 
-    // nextLevelLastnode    表示下层最后一个节点 ，默认null
-    // 1 在栈队列，出队列，取出左右孩子进队列，同时看nextLevelLastnode是不是为空，为空，赋值
-    // 和 currentLevelLastnode 相同，代表同一层的最后一个结束，currentLevelLastnode赋值为 nextLevelLastnode，变成空
-    // 继续过程
-    // 
-
-    function layerWalk(root){
-      let q = [];
-      let r = [];
-      if(root){
-        let currentLevel = 0;
-        let currentLevelLastnode = root;
-        let nextLevelLastnode = null;
-        let q = [root];
-        r[currentLevel] = []
-        while(q.length){
-          let node = q.shift();
-          r[currentLevel].push(node.val)
-          if(node.left){
-            nextLevelLastnode = node.left;
-            q.push(node.left)
-          }
-          if(node.right){
-            nextLevelLastnode = node.right;
-            q.push(node.right)
-          }
-          if(node === currentLevelLastnode){
-            currentLevel++;
-            r[currentLevel] = [];
-            currentLevelLastnode = nextLevelLastnode;
-            nextLevelLastnode = null;
-          }
-        }
-      }
-      return r;
-    }
-=======
     // https://leetcode-cn.com/problems/recover-binary-search-tree/
->>>>>>> 591c971bdf297798142891a6c8954ad02258f9bf
 
   </script>
 
