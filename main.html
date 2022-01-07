@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>burn to dash</title>
   </head>
@@ -9,6 +10,7 @@
     <script src="leetcode.js"></script>
     <script>
       let simples = [
+        "https://leetcode-cn.com/problems/replace-all-s-to-avoid-consecutive-repeating-characters/",
         "https://leetcode-cn.com/problems/elimination-game/",
         "https://leetcode-cn.com/problems/count-special-quadruplets/submissions/",
         "https://leetcode-cn.com/problems/count-triplets-that-can-form-two-arrays-of-equal-xor/",
@@ -90,6 +92,33 @@
       // tree2.left = new TreeNode(5)
       // tree2.right = new TreeNode(7)
       // https://leetcode-cn.com/problems/recover-binary-search-tree/
+
+      function createNode() {
+        return new TreeNode(0);
+      }
+
+      var allPossibleFBT = function (n) {
+        let r = [];
+        if (n & 1) {
+          r[1] = createNode();
+          let node = createNode();
+          node.left = createNode();
+          node.right = createNode();
+          r[3] = node;
+          if (n < 5) {
+            return r[n];
+          }
+          for (let i = 5; i <= n; i += 2) {
+            for (let a = 1; a < i; a += 2) {
+              let lefts = r[a];
+              let rights = r[i - 1 - a];
+            }
+          }
+        } else {
+          return r;
+        }
+      };
+      console.log(allPossibleFBT(3));
     </script>
 
     <script name="单调栈">
@@ -163,6 +192,17 @@
         }
         return r;
       };
+    </script>
+    <script>
+    
+    let date = new Date();
+    let d = 24 * 3600 * 1000;
+    let day = date.getDay();
+    let t = date.getTime() - day * d;
+    console.log(moment(t).format('YYYY-MM-DD hh:mm:ss'));
+    console.log(moment(t - d).format('YYYY-MM-DD HH:mm:ss'));
+    console.log(moment(t - 7 * d).format('YYYY-MM-DD hh:mm:ss'));
+
     </script>
   </body>
 </html>
