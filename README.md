@@ -17,3 +17,4 @@
 - [精选基础算法100题](https://blog.csdn.net/ATFWUS/article/details/106193067)
 - [KMP算法](https://blog.csdn.net/chaifang0620/article/details/109255783)
 - [Manacher算法](https://blog.csdn.net/dyx404514/article/details/42061017)
+- [默克尔树](https://blog.csdn.net/wo541075754/article/details/54632929)
